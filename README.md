@@ -132,7 +132,7 @@ cd ..
 ```
 
 ## Initializing Vault
-Our app will need Vault secrets so we need to initialize and unseal the Vault cluster before it can be used. We will also manage all of the Vault configuration with terraform.
+Our app will need Vault secrets so we need to initialize and unseal Vault before it can be used. We will also manage all of the Vault configuration with Terraform.
 
 ```bash
 cd vault
@@ -143,6 +143,7 @@ cd vault
 # Make sure the new environment variables set in init-vault script
 # is sourced to our shell
 source ~/.bashrc
+export VAULT_TOKEN=$VAULT_TOKEN
 
 # Init terraform
 terraform init
@@ -170,6 +171,10 @@ The app will be available at http://FLOATING_IP:80, you can find the floting IP 
 ```bash
 cd jobs
 nomad run app.nomad
+cd ..
+# Optional: Get the floating ip
+cd cluster
+terraform output ingress_floating_ip
 cd ..
 ```
 

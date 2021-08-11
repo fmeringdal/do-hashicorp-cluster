@@ -45,7 +45,16 @@ CONSULTEMPLATEDIR=/opt/consul-template
 
 # Dependencies
 sudo apt-get update
-sudo apt-get -y dist-upgrade
+# https://superuser.com/questions/1412054/non-interactive-apt-upgrade
+# https://serverfault.com/questions/48724/100-non-interactive-debian-dist-upgrade
+apt-get \
+	-o Dpkg::Options::=--force-confold \
+	-o Dpkg::Options::=--force-confdef \
+	-y --allow-downgrades \
+	--allow-remove-essential \
+	--allow-change-held-packages \
+	dist-upgrade
+# sudo apt-get -y dist-upgrade
 sudo apt-get -y upgrade
 sudo apt-get -y autoremove
 sudo apt-get install -y unzip tree redis-tools jq curl tmux software-properties-common

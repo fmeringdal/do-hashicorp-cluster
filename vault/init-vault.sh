@@ -3,10 +3,10 @@
 KEY_SHARES=5
 KEY_THRESHOLD=3
 
-# vault operator init \
-#     -key-shares=$KEY_SHARES \
-#     -key-threshold=$KEY_THRESHOLD \
-#     -format=json > vault-credentials.json
+vault operator init \
+    -key-shares=$KEY_SHARES \
+    -key-threshold=$KEY_THRESHOLD \
+    -format=json > vault-credentials.json
 
 VAULT_ROOT_TOKEN=$(cat vault-credentials.json | jq '.root_token')
 # Remove double quotes
