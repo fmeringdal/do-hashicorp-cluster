@@ -2,7 +2,7 @@
 This is a nice hosting stack for side projects
 - Cheap hosting (About 20$ per month)
 - Easy deployment of the cluster infrastructure and applications running on it
-- Dyanmic App Credentials
+- Dynamic Credentials
 - Easy certificate management
 - Understandable cluster architecture (Compared to K8S)
 - Fun tools to use
@@ -164,7 +164,7 @@ cd ..
 
 ```
 ## Deploying an app 
-Lets now connect all the pieces by deploying a toy app on Nomad that fetches dynamic PostgreSQL secrets from Vault and is exposed publicly by Traefik.
+Lets now connect all the pieces by deploying a toy app on Nomad that fetches dynamic PostgreSQL credentials from Vault and is exposed publicly by Traefik.
 
 The app weill be available at http://FLOATING_IP:80, you can find the floting IP from the cluster terraform output or in the digitalocean ui. The app will show you the secrets it has received and also let you make DB queries.
 
