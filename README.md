@@ -164,9 +164,9 @@ cd ..
 
 ```
 ## Deploying an app 
-Lets now connect all the pieces by deploying a toy app on Nomad that fetches dynamic PostgreSQL credentials from Vault and is exposed publicly by Traefik.
+Lets now connect all the pieces together by deploying a app on Nomad that fetches dynamic PostgreSQL credentials from Vault and is exposed publicly by Traefik.
 
-The app weill be available at http://FLOATING_IP:80, you can find the floting IP from the cluster terraform output or in the digitalocean ui. The app will show you the secrets it has received and also let you make DB queries.
+The app will be available at http://FLOATING_IP:80, you can find the floting IP from the cluster terraform output or in the digitalocean ui. The app will show you the secrets it has received and also let you make DB queries.
 
 ```bash
 cd jobs
@@ -177,7 +177,7 @@ cd ..
 ## Adding HTTPS 
 Traefik has really nice integrations with lets encrypt and can manage your certificates (creation, renewal etc). These are the steps needed to activate HTTPS:
 1. Point your domain to the floating ip created in the cluster terraform infrastructure
-2. In `traefik.nomad` uncomment the following code `certificatesResolvers.myresolver.acme` section and add your own email.
+2. In `traefik.nomad` uncomment the `certificatesResolvers.myresolver.acme` section and add your own email.
 3. In `app.nomad` your service tags should look like this (Remember to replace `YOUR_DOMAIN_NAME` with your domain name):
 ```
 	"traefik.enable=true",
