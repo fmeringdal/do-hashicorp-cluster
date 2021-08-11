@@ -50,7 +50,7 @@ This is a nice hosting stack for side projects
   <li>Not publicly accessible</li>
   <li>Client instance of Consul</li>
   <li>Client instance of Nomad</li>
-  <li>The different kinds of services / apps / jobs you need to run. Examples are postgresql database, docker container, jar file or node program. All of them are managed by nomad</li>
+  <li>The different kinds of services / apps / jobs you need to run. Examples are postgresql database, docker container, jar file or a node js app. All of them are managed by Nomad</li>
   </ul>
   <h4>Ingress Droplet</h4> 
   <ul>
@@ -131,9 +131,8 @@ nomad run postgres.nomad
 cd ..
 ```
 
-## Initializing vault
-Our app will need vault secrets so we need to initialize and unseal the vault cluster before
-it can be used. We will also manage all of the vault configuration with terraform.
+## Initializing Vault
+Our app will need Vault secrets so we need to initialize and unseal the Vault cluster before it can be used. We will also manage all of the Vault configuration with terraform.
 
 ```bash
 cd vault
@@ -154,8 +153,8 @@ cd ..
 ```
 
 ## Connect Nomad and Vault 
-Nomad needs a Vault token in order to query vault for secrets that it can pass on to the jobs deployed on Nomad. This script will restart the nomad servers with the vault token generated in the
-terraform configuration for Vault in the previous step.
+Nomad needs a Vault token in order to query Vault for secrets that it can pass on to the jobs deployed on Nomad. This script will restart the Nomad servers with the Vault token generated in the
+Terraform configuration for Vault in the previous step.
 
 ```bash
 cd cluster
@@ -175,10 +174,10 @@ cd ..
 ```
 
 ## Adding HTTPS 
-Traefik has really nice integrations with lets encrypt and can manage your certificates (creation, renewal etc). These are the steps needed to activate HTTPS:
+Traefik has really nice integration with lets encrypt and can manage your certificates (creation, renewal etc). These are the steps needed to activate HTTPS:
 1. Point your domain to the floating ip created in the cluster terraform infrastructure
 2. In `traefik.nomad` uncomment the `certificatesResolvers.myresolver.acme` section and add your own email.
-3. In `app.nomad` your service tags should look like this (Remember to replace `YOUR_DOMAIN_NAME` with your domain name):
+3. In `app.nomad` your service tags should look like this (Remember to replace `YOUR_DOMAIN_NAME`):
 ```
 	"traefik.enable=true",
 	"traefik.http.routers.app.entryPoints=http,websecure",
