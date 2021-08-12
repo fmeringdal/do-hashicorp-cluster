@@ -1,6 +1,6 @@
 # Digital Ocean Hashicorp Cluster
 This is a nice hosting stack for side projects
-- Cheap hosting (About 20$ per month)
+- Cheap hosting (About $20 per month)
 - Easy deployment of the cluster infrastructure and applications running on it
 - Dynamic Credentials
 - Easy certificate management
