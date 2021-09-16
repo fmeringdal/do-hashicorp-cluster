@@ -23,4 +23,4 @@ echo "Nomad can be accessed at http://localhost:4646"
 
 # Traefik tunnel
 ssh -4 -f -N -g -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ./id_rsa -L 8081:$INGRESS_IP:8081 root@$INGRESS_IP
-echo "Traefik can be accessed at http://localhost:0881 (When it is enabled)"
+echo "Traefik can be accessed at http://localhost:8081 (When it is enabled)"

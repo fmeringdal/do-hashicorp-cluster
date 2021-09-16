@@ -5,6 +5,9 @@ terraform {
       version = "~> 2.0"
     }
   }
+  backend "s3" {
+    key = "production/terraform.tfstate"
+  }
 }
 
 

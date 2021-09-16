@@ -107,8 +107,11 @@ cd cluster
 # Create SSH key to access droplets
 ssh-keygen -q -t rsa -N '' -f ./id_rsa
 
+# Create a space to hold your terraform state remotely
+./create-backend.sh
+
 # Init terraform
-terraform init
+terraform init -backend-config=./backend.hcl
 
 # Deploy droplets
 terraform apply
