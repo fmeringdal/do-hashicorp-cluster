@@ -7,6 +7,11 @@ output "server_droplet_ips" {
   value = join(",", digitalocean_droplet.nomad_server[*].ipv4_address)
 }
 
+output "nomad_address" {
+  // This makes the provider definition a bit simpiler
+  value = "http://${digitalocean_droplet.nomad_server[0].ipv4_address}:4646"
+}
+
 output "ingress_droplet_ip" {
   value = digitalocean_droplet.ingress_client.ipv4_address
 }

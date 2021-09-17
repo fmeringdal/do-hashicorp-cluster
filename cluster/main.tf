@@ -62,7 +62,7 @@ resource "digitalocean_ssh_key" "default" {
 
 resource "digitalocean_droplet" "nomad_server" {
   count = var.nomad_servers_count
-  image = data.digitalocean_images.cluster_server.images[0].id
+  image = var.snapshot
   # Consul members name must be unique
   name   = "nomad-cluster-server-${count.index}"
   region = var.do_region
@@ -78,7 +78,7 @@ resource "digitalocean_droplet" "nomad_server" {
 
 resource "digitalocean_droplet" "nomad_client" {
   count = var.nomad_clients_count
-  image = data.digitalocean_images.cluster_server.images[0].id
+  image = var.snapshot
   # Consul members name must be unique
   name   = "nomad-cluster-general-client-${count.index}"
   region = var.do_region
@@ -93,7 +93,7 @@ resource "digitalocean_droplet" "nomad_client" {
 }
 
 resource "digitalocean_droplet" "ingress_client" {
-  image = data.digitalocean_images.cluster_server.images[0].id
+  image = var.snapshot
   # Consul members name must be unique
   name     = "nomad-cluster-ingress"
   region   = var.do_region
