@@ -2,6 +2,10 @@ variable "do_token" {
   type = string
 }
 
+variable "snapshot" {
+  type = string
+}
+
 variable "do_region" {
   type    = string
   default = "lon1"
