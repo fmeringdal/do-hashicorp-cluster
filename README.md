@@ -95,7 +95,7 @@ the image which our cluster droplets consists of.
 
 ```bash
 cd image
-packer plugins install github.com/digitalocean/digitalocean
+packer init .
 packer build .
 cd ..
 ```
