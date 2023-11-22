@@ -95,6 +95,7 @@ the image which our cluster droplets consists of.
 
 ```bash
 cd image
+packer init .
 packer build .
 cd ..
 ```
