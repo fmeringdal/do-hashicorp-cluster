@@ -36,3 +36,5 @@ vault-credentials.json
 # SSH keys
 id_rsa
 id_rsa.pub
+
+backend.hcl
